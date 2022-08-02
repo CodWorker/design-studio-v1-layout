@@ -31,6 +31,12 @@ $(function () {
     // console.log(isFirstCurrent === true);
 
     // Scroll
+    // console.log($header.offset().top);
+    //If page reload to attach automatic new style
+    if($header.offset().top > 100){
+        $header.addClass('scrolled');
+    }
+
     $(window).scroll(function () {
         var height = $(window).scrollTop();
 
@@ -272,6 +278,16 @@ $(function () {
         });
 
     });
+
+    //If page loaded attach to home page nav link active style 
+    if($header.offset().top == 0){
+        $('.menu a').each(function (i, el) {
+            var $id = $(el).attr('href');
+            if ($id === '#home') {
+                $(el).addClass('current');
+            }
+        });
+    }
     //-----------------------------------
     // ONE PAGE SCROLLING - end
     //-----------------------------------
